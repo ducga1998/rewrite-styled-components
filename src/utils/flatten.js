@@ -5,11 +5,11 @@ import isFunction from './isFunction';
 import isStatelessFunction from './isStatelessFunction';
 import isPlainObject from './isPlainObject';
 import isStyledComponent from './isStyledComponent';
-import Keyframes from '../models/Keyframes';
+// import Keyframes from '../models/Keyframes';
 import hyphenate from './hyphenateStyleName';
 import addUnitIfNeeded from './addUnitIfNeeded';
-import { IS_BROWSER } from '../constants';
-
+// import { IS_BROWSER } from '../constants';
+const IS_BROWSER = true
 /**
  * It's falsish not falsy because 0 is allowed.
  */
@@ -88,12 +88,12 @@ export default function flatten(chunk: any, executionContext: ?Object, styleShee
     } else return chunk;
   }
 
-  if (chunk instanceof Keyframes) {
+  
     if (styleSheet) {
       chunk.inject(styleSheet);
       return chunk.getName();
     } else return chunk;
-  }
+  
 
   /* Handle objects */
   return isPlainObject(chunk) ? objToCssArray(chunk) : chunk.toString();

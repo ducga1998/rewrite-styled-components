@@ -1,6 +1,3 @@
-// @flow
-// Thanks to ReactDOMFactories for this handy list!
-
 export default [
   'a',
   'abbr',

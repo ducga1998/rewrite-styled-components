@@ -6,15 +6,10 @@ const renderCss  = (cssRaw , propsElement) => {
   let css =  '';
   for(const elementCss of cssRaw) {
     if(isFunction(elementCss)) {
-      
       const result  = elementCss(propsElement)
-      console.log("result",result)
       css += result
     }
-    if (typeof elementCss === 'string' ) {
-        css += elementCss
-    }
-    
+    if (typeof elementCss === 'string' ) { css += elementCss } 
   }
   return css
 }

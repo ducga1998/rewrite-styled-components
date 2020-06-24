@@ -1,6 +1,6 @@
 import * as React from "react";
 import { v4 as uuid } from "uuid";
-import { ThemeContext } from "./";
+import { ThemeContext } from ".";
 const renderCss = (cssRaw, propsElement) => {
   let css = "";
   for (const elementCss of cssRaw) {
@@ -12,6 +12,7 @@ const renderCss = (cssRaw, propsElement) => {
   }
   return css;
 };
+// CORE CODE
 const useStyledComponentImpl = (WrappedStyledComponent, props, ref, css) => {
   const theme = React.useContext(ThemeContext);
   const newProps = { ...props, ...{ theme, ref } };

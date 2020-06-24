@@ -1,10 +1,7 @@
-// @flow
-import type { Interpolation } from '../types';
-
 export default (
-  strings: Array<string>,
-  interpolations: Array<Interpolation>
-): Array<Interpolation> => {
+  strings , 
+  interpolations
+) => {
   const result = [strings[0]];
 
   for (let i = 0, len = interpolations.length; i < len; i += 1) {

@@ -14,7 +14,7 @@ const renderCss = (cssRaw, propsElement) => {
 };
 const useStyledComponentImpl = (WrappedStyledComponent, props, ref, css) => {
   const theme = React.useContext(ThemeContext);
-  const newProps = { ...props, ...{ theme, } };
+  const newProps = { ...props, ...{ theme, ref } };
   const newCss = renderCss(css, newProps);
   const className = WrappedStyledComponent.componentStyle.insertBefore(newCss);
   WrappedStyledComponent.newClassToString = className;

@@ -7,23 +7,24 @@ const theme = {
   backgroundWrapper : "red"
 };
 function App() {
+  const ref  = React.useRef()
   const [isCenter, setCenter] = React.useState(false);
+  React.useEffect(() => {
+    console.log("run good ",ref.current)
+  },[])
   return (
     <>
-    
       <ThemeProvider value={theme}>
-  
         <Wrapper className="App">
        <h1> Component  ThemeProvider</h1>
           <button onClick={() => setCenter(!isCenter)}> center </button>
           <br />
-          <ButtonDuc isGray isCenter={isCenter}>
+          <ButtonDuc ref={ref} isGray isCenter={isCenter}>
             Test Style component
           </ButtonDuc>
           <ButtonDuc> Test Style component</ButtonDuc>
         </Wrapper>
       </ThemeProvider>
-
       <Wrapper>
         <h1>Component not ThemeProvider</h1>
         <button onClick={() => setCenter(!isCenter)}> center </button>

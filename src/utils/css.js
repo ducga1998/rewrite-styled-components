@@ -1,8 +1,8 @@
 // @flow
-import interleave from '../utils/interleave';
-import isPlainObject from '../utils/isPlainObject';
-import isFunction from '../utils/isFunction';
-import flatten from '../utils/flatten';
+import interleave from './interleave';
+import isPlainObject from './isPlainObject';
+import isFunction from './isFunction';
+import flatten from './flatten';
 export default function css(styles, ...interpolations) {
   if (isFunction(styles) || isPlainObject(styles)) {
     const values  = flatten(interleave([], [styles, ...interpolations]));

@@ -3,7 +3,7 @@ import React from "react";
 import styled from "./styled-components";
 import { ThemeProvider } from "./styled-components";
 const theme = {
-  mauden: "red",
+  maudo: "red",
   backgroundWrapper : "red"
 };
 function App() {
@@ -38,9 +38,9 @@ function App() {
   );
 }
 const ButtonDuc = styled.div`
-  height: 200px;
+  height: 100px;
   background: ${(props) => (props.isGray ? "gray" : "white")};
-  color: ${(props) => props.theme.mauden};
+  color: ${(props) => props.theme.maudo};
   display: flex;
   font-size: 16px;
   font-weight: 600;
@@ -49,7 +49,7 @@ const ButtonDuc = styled.div`
     props.isCenter ? `align-items  : center; justify-content : center;` : ""};
 `;
 const Wrapper = styled.div`
-  padding: 50px;
+  padding: 30px;
   margin: 20px;
   background: ${props => props.theme.backgroundWrapper ?  props.theme.backgroundWrapper : 'gray' } ;
 `;

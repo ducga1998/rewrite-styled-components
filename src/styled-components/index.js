@@ -1,6 +1,6 @@
-import domElements from '../utils/domElements';
+import domElements from './utils/domElements';
 import createStyledComponent from './createComponent'
-import css from '../utils/css';
+import css from './utils/css';
 import {createContext} from 'react'
 export const ThemeContext  = createContext({}) 
 export const ThemeProvider = ThemeContext.Provider 

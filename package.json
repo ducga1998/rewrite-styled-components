@@ -7,7 +7,8 @@
     "flow-bin": "^0.127.0",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
-    "react-scripts": "3.4.1"
+    "react-scripts": "3.4.1",
+    "uuid": "^8.2.0"
   },
   "scripts": {
     "start": "react-scripts start",

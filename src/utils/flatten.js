@@ -45,14 +45,11 @@ export const objToCssArray = (obj: Object, prevKey?: string): Array<string | Fun
 if (IS_BROWSER) {
   window.flatten = flatten;
 }
-export default function flatten(chunk: any, executionContext: ?Object, styleSheet: ?Object): any {
-  // console.log("chunk",chunk,executionContext,styleSheet)
+export default function flatten(chunk: any, executionContext: ?Object): any {
   if (Array.isArray(chunk)) {
     const ruleSet = [];
-
     for (let i = 0, len = chunk.length, result; i < len; i += 1) {
-      result = flatten(chunk[i], executionContext, styleSheet);
-      console.log('result', result);
+      result = flatten(chunk[i], executionContext);
       if (result === '') continue;
       else if (Array.isArray(result)) ruleSet.push(...result);
       else ruleSet.push(result);
@@ -60,41 +57,14 @@ export default function flatten(chunk: any, executionContext: ?Object, styleShee
 
     return ruleSet;
   }
-
   if (isFalsish(chunk)) {
     return '';
   }
-
-  /* Handle other components */
-  if (isStyledComponent(chunk)) {
-    return `.${chunk.styledComponentId}`;
-  }
-
-  /* Either execute or defer the function */
   if (isFunction(chunk)) {
     if (isStatelessFunction(chunk) && executionContext) {
       const result = chunk(executionContext);
-
-      if (process.env.NODE_ENV !== 'production' && isElement(result)) {
-        // eslint-disable-next-line no-console
-        console.warn(
-          `${getComponentName(
-            chunk,
-          )} is not a styled component and cannot be referred to via component selector. See https://www.styled-components.com/docs/advanced#referring-to-other-components for more details.`,
-        );
-      }
-
-      return flatten(result, executionContext, styleSheet);
+      return flatten(result, executionContext);
     } else return chunk;
   }
-
-  
-    if (styleSheet) {
-      chunk.inject(styleSheet);
-      return chunk.getName();
-    } else return chunk;
-  
-
-  /* Handle objects */
-  return isPlainObject(chunk) ? objToCssArray(chunk) : chunk.toString();
+    return chunk;
 }

@@ -13,5 +13,6 @@ export default function css(styles, ...interpolations) {
     return styles;
   }
  
-  return flatten(interleave(styles, interpolations));
+return flatten(interleave(styles, interpolations));
 }
+window.css = css

@@ -22,18 +22,18 @@ const useStyledComponentImpl = (WrappedStyledComponent, props, ref, css) => {
   newProps.className = [props.className, className].join(" ");
   return React.createElement(WrappedStyledComponent.target, newProps);
 };
-export const makeStyleTag = () => {
-  const style = document.createElement("style");
-  style.setAttribute("data-style-duc-version", "1.0.0");
-  document.head.insertBefore(style, document.head.childNodes[document.head.childNodes.length]);
-  return style;
-};
 class ComponentStyle {
   sheet = {};
   constructor() {
-    const styleDom =  makeStyleTag();
+    const styleDom =  this.makeStyleTag();
     this.sheet =  styleDom.sheet;
   }
+  makeStyleTag = () => {
+    const style = document.createElement("style");
+    style.setAttribute("data-style-duc-version", "1.0.0");
+    document.head.insertBefore(style, document.head.childNodes[document.head.childNodes.length]);
+    return style;
+  };
   insertBefore(css) {
     const className = uuid();
     const newName = "style-duc-" + className.slice(0, 5);

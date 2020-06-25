@@ -25,15 +25,6 @@ function App() {
           <ButtonDuc> Test Style component</ButtonDuc>
         </Wrapper>
       </ThemeProvider>
-      <Wrapper>
-        <h1>Component not ThemeProvider</h1>
-        <button onClick={() => setCenter(!isCenter)}> center </button>
-          <br />
-          <ButtonDuc isGray isCenter={isCenter}>
-            Test Style component
-          </ButtonDuc>
-          <ButtonDuc> Test Style component</ButtonDuc>
-      </Wrapper>
     </>
   );
 }
